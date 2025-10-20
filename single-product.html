@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>گرافیک لند | جزئیات محصول</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Vazir, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        /* Header section */
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Product Details */
+        .product-image img {
+            border-radius: 15px;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-dark {
+            background: #212529;
+            border: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            padding: 10px 20px;
+        }
+
+        .btn-dark:hover {
+            background: #343a40;
+            transform: scale(1.05);
+        }
+
+        /* Tabs */
+        .nav-tabs .nav-link {
+            border-radius: 8px;
+            margin-left: 5px;
+            color: #212529;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: #212529;
+            color: #fff;
+        }
+
+        .tab-content {
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Comments Section */
+        .comment-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comment-card .reply {
+            margin-right: 2rem;
+            border-right: 2px solid #e9ecef;
+            padding-right: 1rem;
+        }
+
+        .comment-form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (prefers-reduced-motion: reduce) {
+            .product-image img,
+            .btn-dark {
+                transition: none;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-link {
+                padding: 12px 0;
+            }
+
+            .product-image img {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-details {
+                padding: 15px;
+            }
+
+            .comment-form {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand img {
+                width: 50px;
+            }
+
+            .product-details h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-dark {
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Start Header -->
+        <header class="d-flex flex-wrap align-items-center justify-content-center py-3 border-bottom">
+            <nav class="navbar navbar-expand-lg w-100">
+                <div class="container">
+                    <a href="/" class="navbar-brand">
+                        <img src="/assets/images/bootstrap-logo.png" alt="گرافیک لند" width="70">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a href="/" class="nav-link text-dark px-3">خانه</a></li>
+                            <li class="nav-item"><a href="/products.html"
+                                    class="nav-link text-dark px-3 active">محصولات</a></li>
+                            <li class="nav-item"><a href="/articles.html" class="nav-link text-dark px-3">بلاگ</a></li>
+                            <li class="nav-item"><a href="/about.html" class="nav-link text-dark px-3">درباره ما</a>
+                            </li>
+                            <li class="nav-item"><a href="/cart.html" class="nav-link text-dark px-3">سبد خرید</a></li>
+                        </ul>
+                        <div class="d-flex gap-2 justify-content-center mt-3 mt-lg-0">
+                            <button type="button" class="btn btn-outline-dark"><a href="/login.html"
+                                    class="text-decoration-none text-reset">ورود</a></button>
+                            <button type="button" class="btn btn-dark"><a href="/register.html"
+                                    class="text-decoration-none text-white">ثبت نام</a></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- End Header -->
+
+        <!-- Start Main -->
+        <main class="container py-5">
+            <!-- Product Details Section -->
+            <section class="product-details-section">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="product-image">
+                            <img src="/assets/images/product-cover-1.webp" class="object-fit-fill" alt="قالب پوستر تبلیغاتی حرفه‌ای" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product-details">
+                            <span class="text-dark-emphasis">قالب گرافیکی</span>
+                            <h1 class="fw-bold mb-3">قالب پوستر تبلیغاتی حرفه‌ای</h1>
+                            <p class="text-muted mb-3">فایل PSD لایه‌باز برای طراحی پوسترهای تبلیغاتی جذاب و خلاقانه.</p>
+                            <h4 class="text-dark mb-3">۳۵۰,۰۰۰ تومان</h4>
+                            <button type="button" class="btn btn-dark mb-3">افزودن به سبد خرید</button>
+                            <div class="product-meta">
+                                <p><strong>دسته‌بندی:</strong> قالب‌های گرافیکی</p>
+                                <p><strong>شناسه محصول:</strong> #12345</p>
+                                <p><strong>وضعیت:</strong> موجود</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabs for Description and Specifications -->
+            <section class="mt-5">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                            data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                            aria-selected="true">توضیحات</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab"
+                            data-bs-target="#specifications" type="button" role="tab" aria-controls="specifications"
+                            aria-selected="false">مشخصات فنی</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="productTabsContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel"
+                        aria-labelledby="description-tab">
+                        <p>
+                            این قالب PSD لایه‌باز برای طراحی پوسترهای تبلیغاتی حرفه‌ای طراحی شده است. با استفاده از این
+                            قالب می‌توانید پوسترهایی با کیفیت بالا و طراحی‌های خلاقانه برای پروژه‌های خود ایجاد کنید.
+                            این محصول شامل فایل‌های کاملاً قابل ویرایش با لایه‌های سازمان‌یافته است که برای طراحان
+                            گرافیک در هر سطحی مناسب است.
+                        </p>
+                        <p>
+                            ویژگی‌های کلیدی:
+                            <ul>
+                                <li>لایه‌های کاملاً قابل ویرایش</li>
+                                <li>رزولوشن بالا (300 DPI)</li>
+                                <li>سازگار با Adobe Photoshop</li>
+                                <li>طراحی مدرن و جذاب</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>فرمت فایل</th>
+                                    <td>PSD</td>
+                                </tr>
+                                <tr>
+                                    <th>حجم فایل</th>
+                                    <td>45 MB</td>
+                                </tr>
+                                <tr>
+                                    <th>رزولوشن</th>
+                                    <td>300 DPI</td>
+                                </tr>
+                                <tr>
+                                    <th>ابعاد</th>
+                                    <td>A4 (210x297 mm)</td>
+                                </tr>
+                                <tr>
+                                    <th>نرم‌افزار پیشنهادی</th>
+                                    <td>Adobe Photoshop CC</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comments Section -->
+            <section class="mt-5">
+                <h2 class="fw-bold mb-4">نظرات کاربران</h2>
+                <!-- Comment Form -->
+                <div class="comment-form mb-4">
+                    <h4>ارسال نظر</h4>
+                    <form>
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">نام</label>
+                            <input type="text" class="form-control" id="commentName" placeholder="نام شما" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">نظر شما</label>
+                            <textarea class="form-control" id="commentText" rows="4" placeholder="نظر خود را بنویسید"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark">ارسال نظر</button>
+                    </form>
+                </div>
+
+                <!-- Comments List -->
+                <div class="comments-list">
+                    <div class="comment-card">
+                        <div class="d-flex justify-content-between">
+                            <h5>علی محمدی</h5>
+                            <small class="text-muted">۱ مهر ۱۴۰۴</small>
+                        </div>
+                        <p>قالب بسیار باکیفیت و حرفه‌ای است. لایه‌ها به‌خوبی سازمان‌دهی شده‌اند و کار با آن راحت
+                            است.</p>
+                        <button class="btn btn-outline-dark btn-sm reply-btn">پاسخ</button>
+                        <!-- Reply -->
+                        <div class="reply mt-3" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="replyText" class="form-label">پاسخ شما</label>
+                                    <textarea class="form-control" id="replyText" rows="3"
+                                        placeholder="پاسخ خود را بنویسید"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-dark btn-sm">ارسال پاسخ</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="comment-card">
+                        <div class="d-flex justify-content-between">
+                            <h5>سارا احمدی</h5>
+                            <small class="text-muted">۱۵ شهریور ۱۴۰۴</small>
+                        </div>
+                        <p>طراحی زیبا و کاربردیه، فقط کاش آموزش استفاده هم همراهش بود.</p>
+                        <button class="btn btn-outline-dark btn-sm reply-btn">پاسخ</button>
+                        <div class="reply mt-3" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="replyText2" class="form-label">پاسخ شما</label>
+                                    <textarea class="form-control" id="replyText2" rows="3"
+                                        placeholder="پاسخ خود را بنویسید"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-dark btn-sm">ارسال پاسخ</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- End Main -->
+
+        <!-- Start Footer -->
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-4 border-top">
+            <ul class="nav col-12 col-md-5 mb-2 justify-content-center justify-content-md-start mb-md-0">
+                <li><a href="/" class="nav-link text-dark px-3">خانه</a></li>
+                <li><a href="/products.html" class="nav-link text-dark px-3">محصولات</a></li>
+                <li><a href="/articles.html" class="nav-link text-dark px-3">بلاگ</a></li>
+                <li><a href="/about.html" class="nav-link text-dark px-3">درباره ما</a></li>
+                <li><a href="/cart.html" class="nav-link text-dark px-3">سبد خرید</a></li>
+            </ul>
+            <p class="col-12 col-md-5 text-center text-md-end my-4 my-md-0">© ۱۴۰۴ گرافیک لند - تمامی حقوق محفوظ است</p>
+            <a href="/" class="col-12 col-md-2 d-flex justify-content-center justify-content-md-end"
+                aria-label="گرافیک لند">
+                <img src="/assets/images/bootstrap-logo.png" alt="گرافیک لند" width="60">
+            </a>
+        </footer>
+        <!-- End Footer -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Toggle reply form visibility
+            const replyButtons = document.querySelectorAll('.reply-btn');
+            replyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const replyForm = button.nextElementSibling;
+                    replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

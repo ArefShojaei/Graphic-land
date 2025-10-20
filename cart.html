@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>گرافیک لند | سبد خرید</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Vazir, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        /* Header section */
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Cart Table */
+        .cart-table {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .cart-table img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-table .quantity-input {
+            width: 80px;
+        }
+
+        /* Checkout Form */
+        .checkout-form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-dark {
+            background: #212529;
+            border: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            padding: 10px 20px;
+        }
+
+        .btn-dark:hover {
+            background: #343a40;
+            transform: scale(1.05);
+        }
+
+        .btn-outline-danger {
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-outline-danger:hover {
+            transform: scale(1.05);
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (prefers-reduced-motion: reduce) {
+
+            .btn-dark,
+            .btn-outline-danger {
+                transition: none;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-link {
+                padding: 12px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .cart-table,
+            .checkout-form {
+                padding: 15px;
+            }
+
+            .cart-table img {
+                width: 60px;
+                height: 45px;
+            }
+
+            .cart-table .quantity-input {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand img {
+                width: 50px;
+            }
+
+            .cart-table {
+                font-size: 0.9rem;
+            }
+
+            .btn-dark {
+                padding: 8px 16px;
+            }
+
+            .table-responsive {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Start Header -->
+        <header class="d-flex flex-wrap align-items-center justify-content-center py-3 border-bottom">
+            <nav class="navbar navbar-expand-lg w-100">
+                <div class="container">
+                    <a href="/" class="navbar-brand">
+                        <img src="/assets/images/bootstrap-logo.png" alt="گرافیک لند - فروشگاه فایل‌های گرافیکی"
+                            width="70">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a href="/" class="nav-link text-dark px-3">خانه</a></li>
+                            <li class="nav-item"><a href="/products.html" class="nav-link text-dark px-3">محصولات</a>
+                            </li>
+                            <li class="nav-item"><a href="/articles.html" class="nav-link text-dark px-3">بلاگ</a></li>
+                            <li class="nav-item"><a href="/about-us.html" class="nav-link text-dark px-3">درباره ما</a>
+                            </li>
+                            <li class="nav-item"><a href="/cart.html" class="nav-link text-dark px-3">سبد خرید</a></li>
+                        </ul>
+                        <div class="d-flex gap-2 justify-content-center mt-5 mt-lg-0">
+                            <button type="button" class="btn btn-outline-dark"><a href="/login.html"
+                                    class="text-decoration-none text-reset">ورود</a></button>
+                            <button type="button" class="btn btn-dark"><a href="/register.html"
+                                    class="text-decoration-none text-white">ثبت نام</a></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- End Header -->
+
+        <!-- Start Main -->
+        <main class="container py-5">
+            <!-- Cart Section -->
+            <section class="cart-section mb-5">
+                <h2 class="fw-bold mb-4">سبد خرید شما</h2>
+                <div class="cart-table">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>تصویر</th>
+                                    <th>محصول</th>
+                                    <th>قیمت واحد</th>
+                                    <th>تعداد</th>
+                                    <th>مجموع</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItems">
+                                <!-- Cart Item 1 -->
+                                <tr class="cart-item" data-price="350000">
+                                    <td><img src="https://afrafile.com/storage/upload/post/1760536930-%D9%BE%DA%A9%D9%86%D8%B1%D9%85%D8%A7%D8%B3%D8%B3.webp"
+                                            alt="قالب پوستر تبلیغاتی حرفه‌ای" loading="lazy"></td>
+                                    <td>قالب پوستر تبلیغاتی حرفه‌ای</td>
+                                    <td>۳۵۰,۰۰۰ تومان</td>
+                                    <td>
+                                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                                    </td>
+                                    <td class="item-total">۳۵۰,۰۰۰ تومان</td>
+                                    <td>
+                                        <button class="btn btn-outline-danger btn-sm remove-item"
+                                            aria-label="حذف محصول"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Cart Item 2 -->
+                                <tr class="cart-item" data-price="420000">
+                                    <td><img src="https://afrafile.com/storage/upload/post/1760536930-%D9%BE%DA%A9%D9%86%D8%B1%D9%85%D8%A7%D8%B3%D8%B3.webp"
+                                            alt="وکتورهای تجاری" loading="lazy"></td>
+                                    <td>وکتورهای تجاری</td>
+                                    <td>۴۲۰,۰۰۰ تومان</td>
+                                    <td>
+                                        <input type="number" class="form-control quantity-input" value="2" min="1">
+                                    </td>
+                                    <td class="item-total">۸۴۰,۰۰۰ تومان</td>
+                                    <td>
+                                        <button class="btn btn-outline-danger btn-sm remove-item"
+                                            aria-label="حذف محصول"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" class="text-end fw-bold">مجموع کل:</td>
+                                    <td id="cartTotal" class="fw-bold">۱,۱۹۰,۰۰۰ تومان</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button class="btn btn-dark" id="proceedToCheckout">تکمیل سفارش</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- End Main -->
+
+        <!-- Start Footer -->
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-4 border-top">
+            <ul class="nav col-12 col-md-5 mb-2 justify-content-center justify-content-md-start mb-md-0">
+                <li><a href="/" class="nav-link text-dark px-3">خانه</a></li>
+                <li><a href="/products.html" class="nav-link text-dark px-3">محصولات</a></li>
+                <li><a href="/articles.html" class="nav-link text-dark px-3">بلاگ</a></li>
+                <li><a href="/about-us.html" class="nav-link text-dark px-3">درباره ما</a></li>
+                <li><a href="/cart.html" class="nav-link text-dark px-3">سبد خرید</a></li>
+            </ul>
+            <p class="col-12 col-md-5 text-center text-md-end my-4 my-md-0 text-md-center">© ۱۴۰۴ گرافیک لند - تمامی
+                حقوق محفوظ است</p>
+            <a href="/" class="col-12 col-md-2 d-flex justify-content-center justify-content-md-end"
+                aria-label="گرافیک لند">
+                <img src="/assets/images/bootstrap-logo.png" alt="گرافیک لند - فروشگاه فایل‌های گرافیکی" width="70">
+            </a>
+        </footer>
+        <!-- End Footer -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItems = document.querySelectorAll('.cart-item');
+            const cartTotalElement = document.getElementById('cartTotal');
+
+            // Update item total and cart total
+            const updateCart = () => {
+                let total = 0;
+                cartItems.forEach(item => {
+                    const price = parseInt(item.getAttribute('data-price'));
+                    const quantity = parseInt(item.querySelector('.quantity-input').value);
+                    const itemTotal = price * quantity;
+                    item.querySelector('.item-total').textContent =
+                        `${itemTotal.toLocaleString('fa-IR')} تومان`;
+                    total += itemTotal;
+                });
+                cartTotalElement.textContent = `${total.toLocaleString('fa-IR')} تومان`;
+            };
+
+            // Event listeners for quantity changes
+            cartItems.forEach(item => {
+                const quantityInput = item.querySelector('.quantity-input');
+                quantityInput.addEventListener('input', () => {
+                    if (quantityInput.value < 1) quantityInput.value = 1;
+                    updateCart();
+                });
+            });
+
+            // Event listeners for removing items
+            const removeButtons = document.querySelectorAll('.remove-item');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.closest('.cart-item').remove();
+                    updateCart();
+                });
+            });
+
+            // Proceed to checkout (placeholder)
+            document.getElementById('proceedToCheckout').addEventListener('click', () => {
+                document.querySelector('.checkout-form').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

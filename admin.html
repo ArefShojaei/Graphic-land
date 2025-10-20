@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت - فروشگاه فایل‌های گرافیکی</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    <style>
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: #fff;
+            border-left: 1px solid #dee2e6;
+            padding: 1.5rem;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar .nav-link {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: #e9ecef;
+            color: #000;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            margin-right: 250px;
+        }
+
+        header .logo img {
+            width: 60px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-right: 250px;
+            padding: 2rem;
+            min-height: calc(100vh - 80px);
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            background-color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-completed {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        /* Stats Cards */
+        .stats-card {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stats-card h5 {
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-card .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            header,
+            .main-content {
+                margin-right: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-left: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            header,
+            .main-content {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Start Header -->
+        <header class="d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <img src="/assets/images/bootstrap-logo.png" alt="لوگو" width="60">
+                </a>
+            </div>
+            <div class="dropdown d-none d-lg-block">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    ناحیه کاربری
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/">رفتن به فروشگاه</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/">خروج</a></li>
+                </ul>
+            </div>
+            <!-- دکمه همبرگر برای نمایش منوی کلاپس در موبایل -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+        <!-- End Header -->
+
+        <!-- Start Navbar for Mobile (Collapse Menu) -->
+        <nav class="navbar navbar-expand-lg d-lg-none bg-white">
+            <div class="collapse navbar-collapse p-4" id="sidebarCollapse">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link sidebar-link active" data-section="dashboard">
+                            <span class="px-1"><i class="fa-solid fa-house"></i></span>
+                            داشبورد
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#orders" class="nav-link sidebar-link" data-section="orders">
+                            <span class="px-1"><i class="fa-solid fa-truck"></i></span>
+                            سفارشات اخیر
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link sidebar-link" data-section="products">
+                            <span class="px-1"><i class="fa-solid fa-bag-shopping"></i></span>
+                            مدیریت محصولات
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#payment" class="nav-link sidebar-link" data-section="payment">
+                            <span class="px-1"><i class="fa-solid fa-cart-shopping"></i></span>
+                            روش‌های پرداخت
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#blog" class="nav-link sidebar-link" data-section="blog">
+                            <span class="px-1"><i class="fa-solid fa-blog"></i></span>
+                            مدیریت بلاگ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#profile" class="nav-link sidebar-link" data-section="profile">
+                            <span class="px-1"><i class="fa-solid fa-circle-user"></i></span>
+                            ویرایش پروفایل
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#password" class="nav-link sidebar-link" data-section="password">
+                            <span class="px-1"><i class="fa-solid fa-key"></i></span>
+                            تغییر رمز عبور
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" class="nav-link sidebar-link" data-section="settings">
+                            <span class="px-1"><i class="fa-solid fa-gear"></i></span>
+                            تنظیمات سایت
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-danger">
+                            <span class="px-1"><i class="fa-solid fa-right-from-bracket"></i></span>
+                            خروج از حساب
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+        <!-- Start Sidebar for Desktop -->
+        <div class="sidebar d-none d-lg-block">
+            <h4 class="mb-4 text-center">مدیریت حساب</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link sidebar-link active" data-section="dashboard">
+                        <span class="px-1"><i class="fa-solid fa-house"></i></span>
+                        داشبورد
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#orders" class="nav-link sidebar-link" data-section="orders">
+                        <span class="px-1"><i class="fa-solid fa-truck"></i></span>
+                        سفارشات اخیر
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link sidebar-link" data-section="products">
+                        <span class="px-1"><i class="fa-solid fa-bag-shopping"></i></span>
+                        مدیریت محصولات
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#payment" class="nav-link sidebar-link" data-section="payment">
+                        <span class="px-1"><i class="fa-solid fa-cart-shopping"></i></span>
+                        روش‌های پرداخت
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link sidebar-link" data-section="blog">
+                        <span class="px-1"><i class="fa-solid fa-blog"></i></span>
+                        مدیریت بلاگ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link sidebar-link" data-section="profile">
+                        <span class="px-1"><i class="fa-solid fa-circle-user"></i></span>
+                        ویرایش پروفایل
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#password" class="nav-link sidebar-link" data-section="password">
+                        <span class="px-1"><i class="fa-solid fa-key"></i></span>
+                        تغییر رمز عبور
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link sidebar-link" data-section="settings">
+                        <span class="px-1"><i class="fa-solid fa-gear"></i></span>
+                        تنظیمات سایت
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link text-danger">
+                        <span class="px-1"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        خروج از حساب
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- End Sidebar -->
+
+        <!-- Start Main Content -->
+        <div class="main-content">
+            <!-- Dashboard Section -->
+            <div class="content-section" id="dashboard">
+                <div class="card welcome-card">
+                    <h1>خوش آمدید، علی محمدی!</h1>
+                    <p>از اینجا می‌توانید سفارشات، محصولات، بلاگ، و تنظیمات سایت را مدیریت کنید.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card stats-card">
+                            <h5>تعداد کاربران</h5>
+                            <div class="value">۶۴۰</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stats-card">
+                            <h5>فروش کل</h5>
+                            <div class="value">۲.۴۰۰.۰۰۰ تومان</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stats-card">
+                            <h5>بازدید امروز</h5>
+                            <div class="value">۳.۵۷۱</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>آمار فروش</h3>
+                    <canvas id="salesChart" height="100"></canvas>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="content-section" id="orders" style="display: none;">
+                <div class="card order-card">
+                    <h3>سفارشات اخیر</h3>
+                    <div class="order-item">
+                        <div>شماره سفارش: #۴۲۹۱۵</div>
+                        <div>تاریخ: ۱ مهر ۱۴۰۴</div>
+                        <div>مبلغ: ۱,۱۹۰,۰۰۰ تومان</div>
+                        <div class="status-completed">تکمیل شده</div>
+                        <a href="/order-details.html?id=12345" class="btn btn-outline-dark btn-sm">جزئیات</a>
+                    </div>
+                    <div class="order-item">
+                        <div>شماره سفارش: #۴۲۹۱۶</div>
+                        <div>تاریخ: ۱۵ شهریور ۱۴۰۴</div>
+                        <div>مبلغ: ۲۸۰,۰۰۰ تومان</div>
+                        <div class="status-pending">در انتظار</div>
+                        <a href="/order-details.html?id=12346" class="btn btn-outline-dark btn-sm">جزئیات</a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="/orders.html" class="btn btn-outline-dark">مشاهده همه سفارشات</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="content-section" id="products" style="display: none;">
+                <div class="card action-card">
+                    <h3>مدیریت محصولات</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="product-name" class="form-label">نام محصول</label>
+                            <input type="text" class="form-control" id="product-name" placeholder="نام محصول">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-price" class="form-label">قیمت (تومان)</label>
+                            <input type="number" class="form-control" id="product-price" placeholder="قیمت">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-stock" class="form-label">موجودی</label>
+                            <input type="number" class="form-control" id="product-stock" placeholder="موجودی">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-description" class="form-label">توضیحات</label>
+                            <textarea class="form-control" id="product-description" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark">افزودن محصول</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Blog Section -->
+            <div class="content-section" id="blog" style="display: none;">
+                <div class="card action-card">
+                    <h3>مدیریت بلاگ</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="blog-title" class="form-label">عنوان پست</label>
+                            <input type="text" class="form-control" id="blog-title" placeholder="عنوان پست">
+                        </div>
+                        <div class="mb-3">
+                            <label for="blog-category" class="form-label">دسته‌بندی</label>
+                            <select class="form-select" id="blog-category">
+                                <option value="">انتخاب دسته‌بندی</option>
+                                <option value="news">اخبار</option>
+                                <option value="tutorials">آموزش</option>
+                                <option value="tips">نکات</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="blog-content" class="form-label">محتوا</label>
+                            <textarea class="form-control" id="blog-content" rows="6"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="blog-image" class="form-label">تصویر پست</label>
+                            <input type="file" class="form-control" id="blog-image" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn btn-dark">انتشار پست</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="content-section" id="settings" style="display: none;">
+                <div class="card action-card">
+                    <h3>تنظیمات سایت</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="site-title" class="form-label">عنوان سایت</label>
+                            <input type="text" class="form-control" id="site-title" value="فروشگاه فایل‌های گرافیکی">
+                        </div>
+                        <div class="mb-3">
+                            <label for="site-logo" class="form-label">لوگوی سایت</label>
+                            <input type="file" class="form-control" id="site-logo" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="site-contact" class="form-label">اطلاعات تماس</label>
+                            <input type="text" class="form-control" id="site-contact" placeholder="شماره تماس یا ایمیل">
+                        </div>
+                        <button type="submit" class="btn btn-dark">ذخیره تنظیمات</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="content-section" id="profile" style="display: none;">
+                <div class="card action-card">
+                    <h3>ویرایش پروفایل</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">نام</label>
+                            <input type="text" class="form-control" id="name" value="علی محمدی">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control" id="email" value="ali@example.com">
+                        </div>
+                        <button type="submit" class="btn btn-dark">ذخیره تغییرات</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Password Section -->
+            <div class="content-section" id="password" style="display: none;">
+                <div class="card action-card">
+                    <h3>تغییر رمز عبور</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="current-password" class="form-label">رمز عبور فعلی</label>
+                            <input type="password" class="form-control" id="current-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">رمز عبور جدید</label>
+                            <input type="password" class="form-control" id="new-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">تکرار رمز عبور جدید</label>
+                            <input type="password" class="form-control" id="confirm-password">
+                        </div>
+                        <button type="submit" class="btn btn-dark">تغییر رمز</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Payment Section -->
+            <div class="content-section" id="payment" style="display: none;">
+                <div class="card action-card">
+                    <h3>روش‌های پرداخت</h3>
+                    <p class="text-muted">در حال حاضر هیچ روش پرداختی ثبت نشده است.</p>
+                    <a href="#" class="btn btn-outline-dark">افزودن روش پرداخت</a>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Content -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sidebar Navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.sidebar-link');
+            const sections = document.querySelectorAll('.content-section');
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('data-section');
+
+                    // Hide all sections
+                    sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Show the selected section
+                    document.getElementById(sectionId).style.display = 'block';
+
+                    // Update active link
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            // Chart.js Initialization
+            const ctx = document.getElementById('salesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور'],
+                    datasets: [{
+                        label: 'فروش ماهانه (تومان)',
+                        data: [1200000, 1900000, 3000000, 2500000, 2200000, 3100000],
+                        borderColor: '#007bff',
+                        fill: false,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

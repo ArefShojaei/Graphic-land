@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>گرافیک لند | جزئیات پست بلاگ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Vazir, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        /* Header section */
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Blog Post Details */
+        .blog-image img {
+            border-radius: 15px;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-details {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-dark {
+            background: #212529;
+            border: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            padding: 10px 20px;
+        }
+
+        .btn-dark:hover {
+            background: #343a40;
+            transform: scale(1.05);
+        }
+
+        /* Comments Section */
+        .comment-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comment-card .reply {
+            margin-right: 2rem;
+            border-right: 2px solid #e9ecef;
+            padding-right: 1rem;
+        }
+
+        .comment-form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (prefers-reduced-motion: reduce) {
+            .blog-image img,
+            .btn-dark {
+                transition: none;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-link {
+                padding: 12px 0;
+            }
+
+            .blog-image img {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-details {
+                padding: 15px;
+            }
+
+            .comment-form {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand img {
+                width: 50px;
+            }
+
+            .blog-details h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-dark {
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Start Header -->
+        <header class="d-flex flex-wrap align-items-center justify-content-center py-3 border-bottom">
+            <nav class="navbar navbar-expand-lg w-100">
+                <div class="container">
+                    <a href="/" class="navbar-brand">
+                        <img src="/assets/images/bootstrap-logo.png" alt="گرافیک لند" width="70">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a href="/" class="nav-link text-dark px-3">خانه</a></li>
+                            <li class="nav-item"><a href="/products.html"
+                                    class="nav-link text-dark px-3 active">محصولات</a></li>
+                            <li class="nav-item"><a href="/articles.html" class="nav-link text-dark px-3">بلاگ</a></li>
+                            <li class="nav-item"><a href="/about.html" class="nav-link text-dark px-3">درباره ما</a>
+                            </li>
+                            <li class="nav-item"><a href="/cart.html" class="nav-link text-dark px-3">سبد خرید</a></li>
+                        </ul>
+                        <div class="d-flex gap-2 justify-content-center mt-3 mt-lg-0">
+                            <button type="button" class="btn btn-outline-dark"><a href="/login.html"
+                                    class="text-decoration-none text-reset">ورود</a></button>
+                            <button type="button" class="btn btn-dark"><a href="/register.html"
+                                    class="text-decoration-none text-white">ثبت نام</a></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- End Header -->
+
+        <!-- Start Main -->
+        <main class="container py-5">
+            <!-- Blog Post Details Section -->
+            <section class="blog-details-section">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="blog-details">
+                            <div class="blog-image">
+                                <img src="/assets/images/product-cover-2.webp" class="object-fit-fill"
+                                    alt="آموزش طراحی پوستر حرفه‌ای با فتوشاپ" loading="lazy">
+                            </div>
+                            <span class="text-dark-emphasis mt-3 d-block">آموزش</span>
+                            <h1 class="fw-bold mb-3">آموزش طراحی پوستر حرفه‌ای با فتوشاپ</h1>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <small class="text-muted">۱ مهر ۱۴۰۴</small>
+                                <small class="text-muted">نویسنده: علی محمدی</small>
+                            </div>
+                            <div class="blog-content">
+                                <p>
+                                    در این مقاله، شما را با مراحل طراحی یک پوستر تبلیغاتی حرفه‌ای با استفاده از Adobe
+                                    Photoshop آشنا می‌کنیم. این آموزش به‌صورت گام‌به‌گام طراحی شده است تا برای
+                                    مبتدیان و حرفه‌ای‌ها مناسب باشد.
+                                </p>
+                                <h3>مرحله اول: آماده‌سازی پروژه</h3>
+                                <p>
+                                    ابتدا باید یک فایل جدید در فتوشوپ ایجاد کنید. از رزولوشن 300 DPI و ابعاد A4
+                                    (210x297 mm) استفاده کنید. این تنظیمات برای چاپ با کیفیت بالا مناسب هستند.
+                                </p>
+                                <h3>مرحله دوم: انتخاب پالت رنگی</h3>
+                                <p>
+                                    انتخاب یک پالت رنگی مناسب می‌تواند تأثیر زیادی بر جذابیت پوستر داشته باشد.
+                                    پیشنهاد می‌کنیم از ابزارهای آنلاین مانند Adobe Color برای انتخاب رنگ‌ها
+                                    استفاده کنید.
+                                </p>
+                                <h3>مرحله سوم: اضافه کردن تصاویر و متن</h3>
+                                <p>
+                                    تصاویر با کیفیت بالا را به پروژه اضافه کنید و با استفاده از ابزارهای فتوشوپ
+                                    مانند Pen Tool و Text Tool، عناصر گرافیکی و متن را به پوستر اضافه کنید.
+                                </p>
+                                <h3>نکات پایانی</h3>
+                                <ul>
+                                    <li>از فونت‌های خوانا و حرفه‌ای استفاده کنید.</li>
+                                    <li>فاصله‌گذاری مناسب بین عناصر را رعایت کنید.</li>
+                                    <li>پوستر را قبل از نهایی کردن بررسی کنید.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comments Section -->
+            <section class="mt-5">
+                <h2 class="fw-bold mb-4">نظرات کاربران</h2>
+                <!-- Comment Form -->
+                <div class="comment-form mb-4">
+                    <h4>ارسال نظر</h4>
+                    <form>
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">نام</label>
+                            <input type="text" class="form-control" id="commentName" placeholder="نام شما" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">نظر شما</label>
+                            <textarea class="form-control" id="commentText" rows="4" placeholder="نظر خود را بنویسید"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark">ارسال نظر</button>
+                    </form>
+                </div>
+
+                <!-- Comments List -->
+                <div class="comments-list">
+                    <div class="comment-card">
+                        <div class="d-flex justify-content-between">
+                            <h5>سارا احمدی</h5>
+                            <small class="text-muted">۱ مهر ۱۴۰۴</small>
+                        </div>
+                        <p>آموزش بسیار مفید و کاربردی بود. لطفاً آموزش‌های بیشتری در مورد فتوشوپ منتشر کنید!</p>
+                        <button class="btn btn-outline-dark btn-sm reply-btn">پاسخ</button>
+                        <!-- Reply -->
+                        <div class="reply mt-3" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="replyText1" class="form-label">پاسخ شما</label>
+                                    <textarea class="form-control" id="replyText1" rows="3"
+                                        placeholder="پاسخ خود را بنویسید"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-dark btn-sm">ارسال پاسخ</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="comment-card">
+                        <div class="d-flex justify-content-between">
+                            <h5>محمد حسینی</h5>
+                            <small class="text-muted">۲ مهر ۱۴۰۴</small>
+                        </div>
+                        <p>توضیحات خیلی واضح بود، اما کاش مثال‌های تصویری بیشتری داشت.</p>
+                        <button class="btn btn-outline-dark btn-sm reply-btn">پاسخ</button>
+                        <div class="reply mt-3" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="replyText2" class="form-label">پاسخ شما</label>
+                                    <textarea class="form-control" id="replyText2" rows="3"
+                                        placeholder="پاسخ خود را بنویسید"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-dark btn-sm">ارسال پاسخ</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- End Main -->
+
+        <!-- Start Footer -->
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-4 border-top">
+            <ul class="nav col-12 col-md-5 mb-2 justify-content-center justify-content-md-start mb-md-0">
+                <li><a href="/" class="nav-link text-dark px-3">خانه</a></li>
+                <li><a href="/products.html" class="nav-link text-dark px-3">محصولات</a></li>
+                <li><a href="/articles.html" class="nav-link text-dark px-3">بلاگ</a></li>
+                <li><a href="/about.html" class="nav-link text-dark px-3">درباره ما</a></li>
+                <li><a href="/cart.html" class="nav-link text-dark px-3">سبد خرید</a></li>
+            </ul>
+            <p class="col-12 col-md-5 text-center text-md-end my-4 my-md-0">© ۱۴۰۴ گرافیک لند - تمامی حقوق محفوظ است</p>
+            <a href="/" class="col-12 col-md-2 d-flex justify-content-center justify-content-md-end"
+                aria-label="گرافیک لند">
+                <img src="/assets/images/bootstrap-logo.png" alt="گرافیک لند" width="60">
+            </a>
+        </footer>
+        <!-- End Footer -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Toggle reply form visibility
+            const replyButtons = document.querySelectorAll('.reply-btn');
+            replyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const replyForm = button.nextElementSibling;
+                    replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
